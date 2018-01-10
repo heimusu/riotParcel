@@ -1,0 +1,19 @@
+{
+  "name": "riotParcel",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm run build & npm run bundle",
+    "bundle": "parcel src/index.html",
+    "build": "riot src/app/ src/tags.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel-preset-es2015-riot": "^1.1.0",
+    "riot": "^3.8.1"
+  }
+}

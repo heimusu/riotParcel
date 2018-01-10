@@ -1,0 +1,47 @@
+Arguments: 
+  /Users/heimusu/.nodebrew/node/v5.12.0/bin/node /usr/local/Cellar/yarn/1.3.2/libexec/bin/yarn.js init -g parcel-bundler riot
+
+PATH: 
+  /Users/heimusu/.nodebrew/current/bin:/Users/heimusu/.rbenv/shims:/Library/TeX/texbin:/usr/local/heroku/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Library/TeX/texbin:/Users/heimusu/.nodebrew/current/bin:/usr/local/heroku/bin:/Users/heimusu/bin
+
+Yarn version: 
+  1.3.2
+
+Node version: 
+  5.12.0
+
+Platform: 
+  darwin x64
+
+npm manifest: 
+  {
+    "name": "riotParcel",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  Error: canceled
+      at Interface.<anonymous> (/usr/local/Cellar/yarn/1.3.2/libexec/lib/cli.js:121045:13)
+      at emitNone (events.js:80:13)
+      at Interface.emit (events.js:179:7)
+      at Interface._ttyWrite (readline.js:691:16)
+      at ReadStream.onkeypress (readline.js:106:10)
+      at emitTwo (events.js:100:13)
+      at ReadStream.emit (events.js:185:7)
+      at emitKeys (readline.js:1251:14)
+      at next (native)
+      at ReadStream.onData (readline.js:919:36)

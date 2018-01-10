@@ -1,0 +1,1 @@
+{"dependencies":[{"name":"./main.js","dynamic":true}],"generated":{"html":"<!DOCTYPE html>\n<html lang=\"ja\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Riot,Parcel</title>\n</head>\n<body>\n  <app-root></app-root>\n  <script src=\"/dist/5efb7ef437ebb93ec7030a159d74dbcb.js\"></script>\n</body>\n</html>\n"},"hash":"ee19bdd4cbcea793c0eb41c20bcd1761"}
