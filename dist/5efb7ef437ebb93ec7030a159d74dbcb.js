@@ -69,7 +69,7 @@ require = (function (modules, cache, entry) {
 
   // Override the current require with this new one
   return newRequire;
-})({4:[function(require,module,exports) {
+})({9:[function(require,module,exports) {
 var global = (1,eval)("this");
 /* Riot v3.8.1, @license MIT */
 (function (global, factory) {
@@ -3037,7 +3037,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 })));
 
-},{}],3:[function(require,module,exports) {
+},{}],5:[function(require,module,exports) {
 "use strict";
 
 var _riot = require("riot");
@@ -3050,7 +3050,76 @@ _riot2.default.tag2('app-root', '<h4>{title}</h4>', '', '', function (opts) {
 
   this.title = 'Hello, World';
 });
-},{"riot":4}],2:[function(require,module,exports) {
+},{"riot":9}],8:[function(require,module,exports) {
+var bundleURL = null;
+function getBundleURLCached() {
+  if (!bundleURL) {
+    bundleURL = getBundleURL();
+  }
+
+  return bundleURL;
+}
+
+function getBundleURL() {
+  // Attempt to find the URL of the current script and use that as the base URL
+  try {
+    throw new Error;
+  } catch (err) {
+    var matches = ('' + err.stack).match(/(https?|file|ftp):\/\/[^)\n]+/g);
+    if (matches) {
+      return getBaseURL(matches[0]);
+    }
+  }
+
+  return '/';
+}
+
+function getBaseURL(url) {
+  return ('' + url).replace(/^((?:https?|file|ftp):\/\/.+)\/[^/]+$/, '$1') + '/';
+}
+
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+
+},{}],7:[function(require,module,exports) {
+var bundle = require('./bundle-url');
+
+function updateLink(link) {
+  var newLink = link.cloneNode();
+  newLink.onload = function () {
+    link.remove();
+  };
+  newLink.href = link.href.split('?')[0] + '?' + Date.now();
+  link.parentNode.insertBefore(newLink, link.nextSibling);
+}
+
+var cssTimeout = null;
+function reloadCSS() {
+  if (cssTimeout) {
+    return;
+  }
+
+  cssTimeout = setTimeout(function () {
+    var links = document.querySelectorAll('link[rel="stylesheet"]');
+    for (var i = 0; i < links.length; i++) {
+      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
+        updateLink(links[i]);
+      }
+    }
+
+    cssTimeout = null;
+  }, 50);
+}
+
+module.exports = reloadCSS;
+
+},{"./bundle-url":8}],6:[function(require,module,exports) {
+
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
+},{"_css_loader":7}],4:[function(require,module,exports) {
 "use strict";
 
 var _riot = require("riot");
@@ -3059,12 +3128,12 @@ var _riot2 = _interopRequireDefault(_riot);
 
 require("./tags");
 
+require("./scss/index.scss");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-//riotのコンパイラで出力されたtags.js
-
-_riot2.default.mount('app-root');
-},{"riot":4,"./tags":3}],0:[function(require,module,exports) {
+_riot2.default.mount('app-root'); //riotのコンパイラで出力されたtags.js
+},{"riot":9,"./tags":5,"./scss/index.scss":6}],0:[function(require,module,exports) {
 var global = (1, eval)('this');
 var OldModule = module.bundle.Module;
 function Module() {
@@ -3082,7 +3151,7 @@ function Module() {
 module.bundle.Module = Module;
 
 if (!module.bundle.parent && typeof WebSocket !== 'undefined') {
-  var ws = new WebSocket('ws://' + window.location.hostname + ':53233/');
+  var ws = new WebSocket('ws://' + window.location.hostname + ':54262/');
   ws.onmessage = function(event) {
     var data = JSON.parse(event.data);
 
@@ -3183,4 +3252,4 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.require, id)
   });
 }
-},{}]},{},[0,2])
+},{}]},{},[0,4])

@@ -15,5 +15,8 @@
   "dependencies": {
     "babel-preset-es2015-riot": "^1.1.0",
     "riot": "^3.8.1"
+  },
+  "devDependencies": {
+    "node-sass": "^4.7.2"
   }
 }
